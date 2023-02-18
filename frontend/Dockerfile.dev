@@ -1,0 +1,12 @@
+FROM node:19-alpine AS development
+
+WORKDIR /app
+
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+
+COPY . .
+
+EXPOSE 3000
+
+ENTRYPOINT ["npm", "start"]

@@ -1,19 +1,15 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
-const port = 3001;
+const cors = require("cors");
+const port = 4000;
 const taskRoutes = require("./api/routes/tasks");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+app.use(express.json());
+app.use(cors());
 app.use("/api", taskRoutes);
 
 app.listen(port, () => {
